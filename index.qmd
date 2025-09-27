@@ -1,13 +1,13 @@
 ---
-title: "PRIMER REPORTE EN QUARTO"
+title: "TALLER 1 (27-09-25)"
 author: "Diego Guanotasig"
 date: "26-09-25"
 format: html
 jupyter: python3
 ---
-# Titulo 1
+# SINCRONIZACIÓN GITHUB
 
-## Subtitulo 2
+## DATASET GRADO DISCAPACIDAD (100 REGISTROS)
 
 ```{python}
 !pip install vl-convert-python>=1.6.0 vegafusion[embed]>=1.5.0
@@ -86,4 +86,35 @@ chart1 = alt.Chart(df_sample).mark_bar().encode(
 ).interactive()
 
 chart1
+```
+
+```{python}
+chart3 = alt.Chart(df_sample).mark_point().encode(
+    x="Grado_de_Discapacidad:N",
+    y="Provincia:N",
+    color="Genero:N",
+    tooltip=["Provincia","Genero","Tipo_de_Discapacidad", "Recuento"]
+).properties(
+    width=600
+).interactive()
+
+chart3
+```
+
+
+```{python}
+# Conteo por Género
+genero_count = df['Genero'].value_counts().reset_index()
+genero_count.columns = ['Genero', 'Cantidad']
+
+# Gráfico pastel
+pie = alt.Chart(genero_count).mark_arc().encode(
+    theta=alt.Theta("Cantidad:Q", stack=True),
+    color=alt.Color("Genero:N"),
+    tooltip=["Genero","Cantidad"]
+).properties(
+    width=400,
+    height=400,
+    title="Distribución por Género"
+)
 ```

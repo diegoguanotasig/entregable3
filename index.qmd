@@ -104,7 +104,7 @@ genero_count.columns = ['Genero', 'Cantidad']
 pie_genero = alt.Chart(genero_count).mark_arc().encode(
     theta=alt.Theta("Cantidad:Q"),
     color=alt.Color("Genero:N"),
-    tooltip=["Genero","Cantidad"]
+    tooltip=["Genero","Cantidad",]
 ).properties(
     width=400,
     height=400,
@@ -112,4 +112,23 @@ pie_genero = alt.Chart(genero_count).mark_arc().encode(
 )
 
 pie_genero
+```
+
+
+```{python}
+# Conteo por Tipo
+tipo_count = df_sample['Tipo_de_Discapacidad'].value_counts().reset_index()
+tipo_count.columns = ['Tipo_de_Discapacidad', 'Cantidad']
+
+pie_tipo = alt.Chart(tipo_count).mark_arc().encode(
+    theta=alt.Theta("Cantidad:Q"),
+    color=alt.Color("Tipo_de_Discapacidad:N"),
+    tooltip=["Tipo_de_Discapacidad","Cantidad"]
+).properties(
+    width=400,
+    height=400,
+    title="Distribución por Tipo de Discapacidad"
+)
+
+pie_tipo
 ```

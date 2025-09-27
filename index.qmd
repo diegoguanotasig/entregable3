@@ -1,0 +1,22 @@
+---
+title: "PRIMER REPORTE EN QUARTO"
+author: "Diego Guanotasig"
+date: "26-09-25"
+format: html
+jupyter: python3
+---
+# Titulo 1
+
+## Subtitulo 2
+
+```{python}
+import pandas as pd
+import altair as alt
+
+# Lee el CSV que está en la misma carpeta
+df = pd.read_csv("rnd_disc.csv",
+sep=';',
+        encoding='latin-1')
+# Muestra las primeras filas
+df.head()
+```

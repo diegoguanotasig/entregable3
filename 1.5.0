@@ -1,0 +1,5 @@
+Requirement already satisfied: vl-convert-python in f:\2025\mast_ia\1.- fundamentos ia\.venv\lib\site-packages (1.8.0)
+Requirement already satisfied: vegafusion[embed] in f:\2025\mast_ia\1.- fundamentos ia\.venv\lib\site-packages (2.0.2)
+Requirement already satisfied: arro3-core in f:\2025\mast_ia\1.- fundamentos ia\.venv\lib\site-packages (from vegafusion[embed]) (0.6.3)
+Requirement already satisfied: packaging in f:\2025\mast_ia\1.- fundamentos ia\.venv\lib\site-packages (from vegafusion[embed]) (25.0)
+Requirement already satisfied: narwhals>=1.13 in f:\2025\mast_ia\1.- fundamentos ia\.venv\lib\site-packages (from vegafusion[embed]) (2.5.0)

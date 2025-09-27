@@ -10,6 +10,9 @@ jupyter: python3
 ## Subtitulo 2
 
 ```{python}
+!pip install vl-convert-python>=1.6.0 vegafusion[embed]>=1.5.0
+```
+```{python}
 import pandas as pd
 import altair as alt
 
@@ -19,4 +22,18 @@ sep=';',
         encoding='latin-1')
 # Muestra las primeras filas
 df.head()
+```
+
+
+```{python}
+import pandas as pd
+import altair as alt
+
+data = pd.DataFrame({"x": range(10000)})
+alt.data_transformers.enable('default', max_rows=20000)
+
+alt.Chart(data).mark_bar().encode(
+    x=alt.X('x:Q', bin=alt.Bin(maxbins=50)),  # histograma de x
+    y='count()'
+).interactive()
 ```

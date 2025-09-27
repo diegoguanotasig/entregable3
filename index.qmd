@@ -26,6 +26,9 @@ df.head()
 
 ```{python}
 df_sample = df.sample(100, random_state=42)
+
+alt.renderers.enable("default")
+alt.data_transformers.disable_max_rows()
 ```
 ```{python}
 # Limpiar nombres
@@ -57,15 +60,6 @@ alt.Chart(df_sample).mark_bar().encode(
 ).interactive()
 ```
 
-```{python}
-import pandas as pd
-import altair as alt
-
-alt.Chart(df_sample).mark_bar().encode(
-    x=alt.X('x:Q', bin=alt.Bin(maxbins=50)),  # histograma de x
-    y='count()'
-).interactive()
-```
 
 ```{python}
 alt.Chart(df_sample).mark_bar().encode(
@@ -104,12 +98,11 @@ chart3
 
 ```{python}
 # Conteo por Género
-genero_count = df['Genero'].value_counts().reset_index()
+genero_count = df_sample['Genero'].value_counts().reset_index()
 genero_count.columns = ['Genero', 'Cantidad']
 
-# Gráfico pastel
-pie = alt.Chart(genero_count).mark_arc().encode(
-    theta=alt.Theta("Cantidad:Q", stack=True),
+pie_genero = alt.Chart(genero_count).mark_arc().encode(
+    theta=alt.Theta("Cantidad:Q"),
     color=alt.Color("Genero:N"),
     tooltip=["Genero","Cantidad"]
 ).properties(
@@ -117,4 +110,6 @@ pie = alt.Chart(genero_count).mark_arc().encode(
     height=400,
     title="Distribución por Género"
 )
+
+pie_genero
 ```
